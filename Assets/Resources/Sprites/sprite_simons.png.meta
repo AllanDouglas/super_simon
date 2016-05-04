@@ -1,0 +1,414 @@
+fileFormatVersion: 2
+guid: 72ba0f3485995bc46ae7cf294745c355
+timeCreated: 1462119459
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: sprite_simons_0
+    21300002: sprite_simons_1
+    21300004: sprite_simons_2
+    21300006: sprite_simons_3
+    21300008: sprite_simons_4
+    21300010: sprite_simons_5
+    21300012: sprite_simons_6
+    21300014: sprite_simons_7
+    21300016: sprite_simons_8
+    21300018: sprite_simons_9
+    21300020: sprite_simons_10
+    21300022: sprite_simons_11
+    21300024: sprite_simons_12
+    21300026: sprite_simons_13
+    21300028: sprite_simons_14
+    21300030: sprite_simons_15
+    21300032: sprite_simons_16
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: sprite_simons_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 727
+        width: 141
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -58.5, y: 70}
+        - {x: -70.5, y: 48}
+        - {x: -70.5, y: -70}
+        - {x: 69.5, y: -70}
+        - {x: 70.5, y: -69}
+        - {x: 70.5, y: 50}
+        - {x: 66.5, y: 70}
+      - - {x: -53.5, y: -9}
+        - {x: -28.5, y: 47}
+        - {x: 54.5, y: 9}
+        - {x: 1.5, y: -54}
+    - name: sprite_simons_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 521
+        width: 168
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52, y: 83}
+        - {x: -64, y: 79}
+        - {x: -80, y: 64}
+        - {x: -84, y: 52}
+        - {x: -84, y: -83}
+        - {x: 24, y: -83}
+        - {x: 84, y: -24}
+        - {x: 84, y: 83}
+    - name: sprite_simons_2
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 521
+        width: 169
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 55.5, y: 83}
+        - {x: -84.5, y: 83}
+        - {x: -84.5, y: -24}
+        - {x: -52.5, y: -38}
+        - {x: -23.5, y: -82}
+        - {x: -22.5, y: -83}
+        - {x: 84.5, y: -83}
+        - {x: 84.5, y: 57}
+        - {x: 67.5, y: 80}
+    - name: sprite_simons_3
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 509
+        width: 189
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 90.5, y: 93}
+        - {x: -57.5, y: 93}
+        - {x: -71.5, y: 87}
+        - {x: -89.5, y: 68}
+        - {x: -94.5, y: 56}
+        - {x: -94.5, y: -90}
+        - {x: -90.5, y: -93}
+        - {x: 31.5, y: -93}
+        - {x: 92.5, y: -36}
+        - {x: 94.5, y: -30}
+        - {x: 94.5, y: 88}
+    - name: sprite_simons_4
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 509
+        width: 188
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 69, y: 89}
+        - {x: 57, y: 93}
+        - {x: -90, y: 93}
+        - {x: -94, y: 91}
+        - {x: -94, y: -30}
+        - {x: -90, y: -33}
+        - {x: -58, y: -48}
+        - {x: -30, y: -93}
+        - {x: 91, y: -93}
+        - {x: 94, y: -91}
+        - {x: 94, y: 60}
+        - {x: 87, y: 72}
+    - name: sprite_simons_5
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 363
+        width: 132
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: 13.5}
+        - {x: -66, y: -29.5}
+        - {x: -66, y: -65.5}
+        - {x: 11, y: -65.5}
+        - {x: 66, y: -11.5}
+        - {x: 66, y: 65.5}
+        - {x: 18, y: 65.5}
+        - {x: 10, y: 64.5}
+    - name: sprite_simons_6
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 363
+        width: 132
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -66, y: 65.5}
+        - {x: -66, y: -10.5}
+        - {x: -9, y: -65.5}
+        - {x: 66, y: -65.5}
+        - {x: 66, y: 3.5}
+        - {x: 5, y: 65.5}
+    - name: sprite_simons_7
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 360
+        width: 147
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 34.5, y: 73}
+        - {x: -3.5, y: 63}
+        - {x: -58.5, y: 11}
+        - {x: -73.5, y: -34}
+        - {x: -73.5, y: -73}
+        - {x: 13.5, y: -73}
+        - {x: 16.5, y: -70}
+        - {x: 73.5, y: -18}
+        - {x: 73.5, y: 73}
+    - name: sprite_simons_8
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 360
+        width: 147
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23.5, y: 73}
+        - {x: -73.5, y: 73}
+        - {x: -73.5, y: -20}
+        - {x: -14.5, y: -73}
+        - {x: 73.5, y: -73}
+        - {x: 73.5, y: -16}
+        - {x: 13.5, y: 64}
+    - name: sprite_simons_9
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 199
+        width: 132
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -66, y: 65}
+        - {x: -66, y: 25}
+        - {x: -62, y: -1}
+        - {x: -35, y: -25}
+        - {x: 14, y: -60}
+        - {x: 35, y: -65}
+        - {x: 66, y: -65}
+        - {x: 66, y: 11}
+        - {x: 10, y: 65}
+    - name: sprite_simons_10
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 199
+        width: 132
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11, y: 65}
+        - {x: -66, y: 10}
+        - {x: -66, y: -65}
+        - {x: -9, y: -65}
+        - {x: 66, y: -3}
+        - {x: 66, y: 65}
+    - name: sprite_simons_11
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 192
+        width: 147
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -73.5, y: 73}
+        - {x: -73.5, y: 12}
+        - {x: -32.5, y: -49}
+        - {x: 38.5, y: -73}
+        - {x: 70.5, y: -73}
+        - {x: 73.5, y: -70}
+        - {x: 73.5, y: 19}
+        - {x: 27.5, y: 73}
+    - name: sprite_simons_12
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 190
+        width: 147
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18.5, y: 73}
+        - {x: -73.5, y: 23}
+        - {x: -73.5, y: -73}
+        - {x: 20.5, y: -73}
+        - {x: 33.5, y: -72}
+        - {x: 73.5, y: 11}
+        - {x: 73.5, y: 72}
+        - {x: 71.5, y: 73}
+    - name: sprite_simons_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 15
+        width: 168
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 29, y: 65}
+        - {x: 23, y: 83}
+        - {x: -84, y: 83}
+        - {x: -84, y: -53}
+        - {x: -78, y: -67}
+        - {x: -58, y: -83}
+        - {x: 84, y: -83}
+        - {x: 84, y: 24}
+        - {x: 52, y: 37}
+    - name: sprite_simons_14
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 15
+        width: 169
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 84.5, y: 83}
+        - {x: -23.5, y: 83}
+        - {x: -37.5, y: 53}
+        - {x: -84.5, y: 24}
+        - {x: -84.5, y: -83}
+        - {x: 58.5, y: -83}
+        - {x: 66.5, y: -79}
+        - {x: 84.5, y: -57}
+    - name: sprite_simons_15
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 0
+        width: 189
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 51.5, y: 58}
+        - {x: 29.5, y: 93}
+        - {x: -91.5, y: 93}
+        - {x: -94.5, y: 91}
+        - {x: -94.5, y: -54}
+        - {x: -88.5, y: -71}
+        - {x: -74.5, y: -85}
+        - {x: -60.5, y: -93}
+        - {x: 90.5, y: -93}
+        - {x: 94.5, y: -90}
+        - {x: 94.5, y: 30}
+        - {x: 84.5, y: 36}
+    - name: sprite_simons_16
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 0
+        width: 188
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 91, y: 93}
+        - {x: -32, y: 93}
+        - {x: -50, y: 59}
+        - {x: -73, y: 37}
+        - {x: -87, y: 35}
+        - {x: -94, y: 30}
+        - {x: -94, y: -90}
+        - {x: -91, y: -93}
+        - {x: 64, y: -93}
+        - {x: 89, y: -74}
+        - {x: 94, y: -60}
+        - {x: 94, y: 91}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
