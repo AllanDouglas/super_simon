@@ -96,14 +96,17 @@ public class SimonBehaviourScript : MonoBehaviour {
     /// <param name="light"></param>
     /// <returns></returns>
     public IEnumerator Blink(LightBehaviourScript light)
-    {   
+    {
+        
         // toca a nota 
         light.TurnOn();
         // espera
         yield return new WaitForSeconds(timeToChange);
         // apaga a nota
         light.TurnOff();
-        
+        // aguarda meio segundo antes de ligar 
+        yield return new WaitForSeconds(0.5f);
+
     }
 
 	/// <summary>

@@ -5,7 +5,9 @@ using System.Collections;
 public class LevelBehaviourScript : MonoBehaviour {
     //propriedades publicas
     [Header("Simon")]
-    public SimonBehaviourScript Simon;    
+    public SimonBehaviourScript Simon;
+
+    public Text LevelText;
 
     // propriedades privadas
     private int score = 0;
@@ -16,6 +18,7 @@ public class LevelBehaviourScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        this.LevelText.text = level.ToString();
         // configura o evento de captura
         LightBehaviourScript.OnTouchEvent += HandlerTouchLight;
         SimonBehaviourScript.OnEndPlay += HandlerEndPlaySimon;
@@ -111,6 +114,9 @@ public class LevelBehaviourScript : MonoBehaviour {
     {
         // incrementa o level
         level++;
+
+        this.LevelText.text = level.ToString();
+
         // adiciona uma luz no simon
         Simon.AddLight();
         // toca a sequencia novamente;
@@ -150,6 +156,8 @@ public class LevelBehaviourScript : MonoBehaviour {
     {
         // quebra o combo
         ComboBreak();
+        //reinicia
+        Invoke("PlaySimon", 2f);
     }
     
 

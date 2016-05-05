@@ -43,7 +43,7 @@ public class LightBehaviourScript : MonoBehaviour {
 	// ativar
 	public void TurnOn(){
 		this._spriteRenderer.sprite = this.active;
-		//this._audioSource.PlayOneShot (this.sound);
+		this._audioSource.PlayOneShot (this.sound);
 	}
 	// desativar 
 	public void TurnOff(){
