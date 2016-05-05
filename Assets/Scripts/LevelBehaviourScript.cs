@@ -22,6 +22,7 @@ public class LevelBehaviourScript : MonoBehaviour {
         // configura o evento de captura
         LightBehaviourScript.OnTouchEvent += HandlerTouchLight;
         SimonBehaviourScript.OnEndPlay += HandlerEndPlaySimon;
+        SimonBehaviourScript.OnStartPlay += HandlerStartPlaySimon;
         // Inicia o Game
         StartUp();
 
@@ -62,11 +63,11 @@ public class LevelBehaviourScript : MonoBehaviour {
     /// <param name="light"></param>
     private void HandlerTouchLight(LightBehaviourScript light)
     {
-        // liga a lampada
-        StartCoroutine(Simon.Blink(light));
-
         //se não for o turno do jogador ignora
         if (!playerTurn) return;
+
+        // liga a lampada
+        StartCoroutine(Simon.Blink(light));        
 
         // pego a luz atual da squencia do simon
         LightBehaviourScript CurrentLight= Simon.GetCurrentLight();
