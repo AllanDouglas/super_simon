@@ -6,8 +6,8 @@ public class LevelBehaviourScript : MonoBehaviour {
     //propriedades publicas
     [Header("Simon")]
     public SimonBehaviourScript Simon;
-
-    public Text LevelText;
+    [Header("In Game Ui")]
+    public InGameUiBehaviourScript InGameUi;    
 
     // propriedades privadas
     private int score = 0;
@@ -18,7 +18,10 @@ public class LevelBehaviourScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        this.LevelText.text = level.ToString();
+        // configura a UI
+        InGameUi.Level = level;
+        InGameUi.Combo = combo;
+        InGameUi.Score = score;
         // configura o evento de captura
         LightBehaviourScript.OnTouchEvent += HandlerTouchLight;
         SimonBehaviourScript.OnEndPlay += HandlerEndPlaySimon;
@@ -115,8 +118,7 @@ public class LevelBehaviourScript : MonoBehaviour {
     {
         // incrementa o level
         level++;
-
-        this.LevelText.text = level.ToString();
+        InGameUi.Level = level;
 
         // adiciona uma luz no simon
         Simon.AddLight();
@@ -134,13 +136,20 @@ public class LevelBehaviourScript : MonoBehaviour {
 
         // incrementa o contador de combo
         comboCounter++;
+        InGameUi.ComboCounter(comboCounter); // atualiza a ui
         if(comboCounter > 4)
         {
-            comboCounter = 0; // zera o contador de combo
+            comboCounter = 0; // zera o contador de combo            
             combo++; // incrementa o multiplicador de combo
+
+            // atualiza a UI
+            InGameUi.ResetComboCounters();
+            InGameUi.Combo = combo;
+
         }
 
         score += 10 * combo; // pontua
+        InGameUi.Score = score; // atualiza a UI
     }
     /// <summary>
     /// Zera o combo
@@ -148,13 +157,22 @@ public class LevelBehaviourScript : MonoBehaviour {
     private void ComboBreak()
     {
         comboCounter = 0;
-        combo = 0;
+        combo = 1;
+        // atualiza a UI
+        InGameUi.ResetComboCounters();
+        InGameUi.Combo = combo;
+
     }
     /// <summary>
     /// Erro
     /// </summary>
     private void Error()
     {
+        // interrompe a jogada do player
+        playerTurn = false;
+
+
+
         // quebra o combo
         ComboBreak();
         //reinicia
