@@ -2,12 +2,17 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class LevelBehaviourScript : MonoBehaviour {
+public class LevelBehaviourScript : MonoBehaviour
+{
     //propriedades publicas
+    [Header("Tempo incrementador por level")]
+    public float incrementTime = 0.5f;
     [Header("Simon")]
     public SimonBehaviourScript Simon;
+    [Header("Timer")]
+    public TimerBehaviourScript Timer;
     [Header("In Game Ui")]
-    public InGameUiBehaviourScript InGameUi;    
+    public InGameUiBehaviourScript InGameUi;
 
     // propriedades privadas
     private int score = 0;
@@ -16,8 +21,9 @@ public class LevelBehaviourScript : MonoBehaviour {
     private int comboCounter = 0;
     private bool playerTurn = false;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         // configura a UI
         InGameUi.Level = level;
         InGameUi.Combo = combo;
@@ -26,17 +32,17 @@ public class LevelBehaviourScript : MonoBehaviour {
         LightBehaviourScript.OnTouchEvent += HandlerTouchLight;
         SimonBehaviourScript.OnEndPlay += HandlerEndPlaySimon;
         SimonBehaviourScript.OnStartPlay += HandlerStartPlaySimon;
-        // Inicia o Game
-        StartUp();
+        TimerBehaviourScript.OnOverTime += HandlerOverTime;
 
-	}
+
+    }
     /// <summary>
     /// StartUp the game
     /// </summary>
-    private void StartUp()
+    public void StartUp()
     {
         // adiciona uma rodada ao simon        
-        this.Simon.AddLight();        
+        this.Simon.AddLight();
         // executa o simon
         this.Simon.Play();
     }
@@ -49,6 +55,9 @@ public class LevelBehaviourScript : MonoBehaviour {
     {
         // libera a rodada para o jogador
         playerTurn = true;
+        // inicia o temporizador
+        this.Timer.Play();
+
     }
     /// <summary>
     /// Manipula o start do play
@@ -58,6 +67,16 @@ public class LevelBehaviourScript : MonoBehaviour {
     {
         // trava a jogada do player
         playerTurn = false;
+
+    }
+    /// <summary>
+    /// Manipula o evento dispardo quando o tempo acaba
+    /// </summary>
+    private void HandlerOverTime()
+    {
+
+        Simon.gameObject.SetActive(false);
+        Debug.Log("Game Over");
     }
 
     /// <summary>
@@ -70,10 +89,10 @@ public class LevelBehaviourScript : MonoBehaviour {
         if (!playerTurn) return;
 
         // liga a lampada
-        StartCoroutine(Simon.Blink(light));        
+        StartCoroutine(Simon.Blink(light));
 
         // pego a luz atual da squencia do simon
-        LightBehaviourScript CurrentLight= Simon.GetCurrentLight();
+        LightBehaviourScript CurrentLight = Simon.GetCurrentLight();
         // compara com light clicada        
         if (light == CurrentLight)
         {
@@ -83,7 +102,7 @@ public class LevelBehaviourScript : MonoBehaviour {
             ComboUp();
 
             // verifica se terminou a sequencia
-            if(Simon.SequenceCursor == Simon.SequenceLenght)
+            if (Simon.SequenceCursor == Simon.SequenceLenght)
             {
                 // quando passa de nivel termina a jogada do 
                 playerTurn = false;
@@ -99,7 +118,7 @@ public class LevelBehaviourScript : MonoBehaviour {
             // erro
             Error();
         }
-        
+
 
     }
     /// <summary>
@@ -116,15 +135,18 @@ public class LevelBehaviourScript : MonoBehaviour {
     /// </summary>
     private void LevelUp()
     {
+        // reseta o timer
+        Timer.Stop();
         // incrementa o level
         level++;
         InGameUi.Level = level;
-
+        // incrementa o tempo
+        Timer.MaxTime = Timer.MaxTime + incrementTime;
         // adiciona uma luz no simon
         Simon.AddLight();
         // toca a sequencia novamente;
         Invoke("PlaySimon", 2f);
-        
+
     }
     /// <summary>
     /// Eleva o combo
@@ -137,7 +159,7 @@ public class LevelBehaviourScript : MonoBehaviour {
         // incrementa o contador de combo
         comboCounter++;
         InGameUi.ComboCounter(comboCounter); // atualiza a ui
-        if(comboCounter > 4)
+        if (comboCounter > 4)
         {
             comboCounter = 0; // zera o contador de combo            
             combo++; // incrementa o multiplicador de combo
@@ -170,14 +192,22 @@ public class LevelBehaviourScript : MonoBehaviour {
     {
         // interrompe a jogada do player
         playerTurn = false;
-
-
-
+        // pausa o timer
+        this.Timer.Pause();
         // quebra o combo
         ComboBreak();
         //reinicia
         Invoke("PlaySimon", 2f);
     }
-    
-
+    /// <summary>
+    /// Quando o nível é destruido
+    /// </summary>
+    public void OnDestroy()
+    {
+        // remove os eventos
+        LightBehaviourScript.OnTouchEvent -= HandlerTouchLight;
+        SimonBehaviourScript.OnEndPlay -= HandlerEndPlaySimon;
+        SimonBehaviourScript.OnStartPlay -= HandlerStartPlaySimon;
+        TimerBehaviourScript.OnOverTime -= HandlerOverTime;
+    }
 }

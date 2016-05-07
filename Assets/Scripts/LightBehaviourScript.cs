@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 [RequireComponent (typeof(SpriteRenderer))]
 
-public class LightBehaviourScript : MonoBehaviour {
+public class LightBehaviourScript : MonoBehaviour, ISwitch {
 
 	//eventos
 	public delegate void LightEvent(LightBehaviourScript light);
@@ -49,6 +50,5 @@ public class LightBehaviourScript : MonoBehaviour {
 	public void TurnOff(){
 		this._spriteRenderer.sprite = this.standard;
 	}
-
 
 }
