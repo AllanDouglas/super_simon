@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
-
+/// <summary>
+/// Controle da UI In Game
+/// </summary>
 public class InGameUiBehaviourScript : MonoBehaviour {
 
     // fields
@@ -17,11 +18,20 @@ public class InGameUiBehaviourScript : MonoBehaviour {
     private Image[] comboCounters; // array de imagens para representar os contadores 
     [Header("Colors")]
     [SerializeField]
-    private Color activeColor;
+    private Color activeColor; // cor quando o contador está ativo
     [SerializeField]
-    private Color inactiveColor;
+    private Color inactiveColor; // cor quando o contador está inativo
+    // botão mute
+    [Header("Mute Button")]
+    [SerializeField]
+    private Button buttonMute;
+    [SerializeField]
+    private Sprite audioOnSprite;
+    [SerializeField]
+    private Sprite audioOffSprite;
 
-
+    // controle do audio
+    private bool isMute = false;
 
     /// <summary>
     /// Configura o score
@@ -72,10 +82,24 @@ public class InGameUiBehaviourScript : MonoBehaviour {
     // on start
     void Start()
     {
-        for (int i = 0; i < this.comboCounters.Length; i++)
-        {
-            comboCounters[i].color = this.inactiveColor;
-        }
+        ResetComboCounters();
     }         
     
+    /// <summary>
+    /// muta
+    /// </summary>
+    private void Mute()
+    {
+        isMute = !isMute;
+        Camera.main.GetComponent<AudioListener>().enabled = !isMute;
+        if (isMute)
+        {
+            buttonMute.image.sprite = audioOffSprite;
+        }
+        else
+        {
+            buttonMute.image.sprite = audioOnSprite;
+        }
+    }
+
 }
