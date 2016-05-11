@@ -15,7 +15,8 @@ public class TimerBehaviourScript : MonoBehaviour, ITimer
     private float maxTime;
     public float MaxTime
     {
-        get {
+        get
+        {
             return maxTime;
         }
         set
@@ -49,14 +50,14 @@ public class TimerBehaviourScript : MonoBehaviour, ITimer
         _slider = GetComponent<Slider>();
         // configura o tempo maximo        
         _slider.maxValue = maxTime;
-    
+
     }
     /// <summary>
     /// Inicia a Contagem
     /// </summary>
     public void Play()
     {
-        isPlaying = true;        
+        isPlaying = true;
         _slider.value = leftTime;
         StartCoroutine(Playing());
 
@@ -75,10 +76,10 @@ public class TimerBehaviourScript : MonoBehaviour, ITimer
     public void Stop()
     {
         // reseta o tempo
-        LeftTime = 0; 
+        LeftTime = 0;
         // para a corrotina
         isPlaying = false;
-        StopCoroutine(Playing());        
+        StopCoroutine(Playing());
     }
     /// <summary>
     ///  Enquanto está Ativo
@@ -91,10 +92,10 @@ public class TimerBehaviourScript : MonoBehaviour, ITimer
             // ajusta o tempo
             leftTime += Time.fixedDeltaTime;
             _slider.value = leftTime;
+
             // verifica se o tempo acabou     
-            if(leftTime <= 0 && OnOverTime != null )
+            if (leftTime >= maxTime && OnOverTime != null)
             {
-                Debug.Log("##### The time is over #####");
                 OnOverTime();
                 Stop();
             }

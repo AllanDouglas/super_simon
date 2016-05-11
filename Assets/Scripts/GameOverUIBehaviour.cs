@@ -3,6 +3,11 @@ using UnityEngine.UI;
 
 public class GameOverUIBehaviour : MonoBehaviour
 {
+    // const
+    private static Color LIFE_ACTIVE_COLOR = new Color(1, 182 / 255, 182 / 255, 1);
+    private static Color LIFE_INACTIVE_COLOR = new Color(236 / 255, 236 / 255, 236 / 255, 1);
+
+
     // eventos
     public delegate void GameOverUiEvent();
     public static event GameOverUiEvent OnRestartClick;
@@ -10,17 +15,21 @@ public class GameOverUIBehaviour : MonoBehaviour
 
     // label score
     // label nível
-    [Header("Label do score")]
+    [Header("Labels")]
     [SerializeField]
     private Text labelScore;
-    [Header("Label do level")]
+    [SerializeField]
+    private Text labelBestScore;
     [SerializeField]
     private Text labelLevel;
+    [SerializeField]
+    private Text labelBestLevel;
     //restart button
-    [Header("Button para restart")]
+    [Header("Buttons")]
     [SerializeField]
     private Button buttonRestart;
     // continue button
+    [SerializeField]
     private Button buttonContinue;
     [Header("Imagens para as vidas")]
     [SerializeField]
@@ -37,7 +46,7 @@ public class GameOverUIBehaviour : MonoBehaviour
                 lifeCounter[i].gameObject.SetActive(false);
             }
 
-            for (int i =0; i < value; i++)
+            for (int i = 0; i < value; i++)
             {
                 lifeCounter[i].gameObject.SetActive(true);
             }
@@ -47,7 +56,7 @@ public class GameOverUIBehaviour : MonoBehaviour
     /// <summary>
     /// Texto do label do score
     /// </summary>
-    public string ScoreText
+    public string TextScore
     {
         get
         {
@@ -55,13 +64,48 @@ public class GameOverUIBehaviour : MonoBehaviour
         }
         set
         {
-            labelScore.text = value;
+            labelScore.text = "Score: " + value;
         }
     }
+
+    /// <summary>
+    /// Texto do label do melhor score
+    /// </summary>
+    public string TextBestScore
+    {
+        get
+        {
+            return labelBestScore.text;
+        }
+
+        set
+        {
+            labelBestScore.text = "Best: " + value;
+        }
+
+    }
+
+    /// <summary>
+    /// Texto do label do melhor level
+    /// </summary>
+    public string TextBestLevel
+    {
+        get
+        {
+            return labelBestLevel.text;
+        }
+
+        set
+        {
+            labelBestLevel.text = "Best: " + value;
+        }
+
+    }
+
     /// <summary>
     /// Texto do label do level
     /// </summary>
-    public string LevelScore
+    public string TextLevel
     {
         get
         {
@@ -70,7 +114,7 @@ public class GameOverUIBehaviour : MonoBehaviour
 
         set
         {
-            labelLevel.text = value;
+            labelLevel.text = "Level: " + value;
         }
 
     }
@@ -87,7 +131,7 @@ public class GameOverUIBehaviour : MonoBehaviour
     /// </summary>
     private void Restart()
     {
-        if(OnRestartClick != null)
+        if (OnRestartClick != null)
         {
             OnRestartClick();
         }
@@ -97,12 +141,10 @@ public class GameOverUIBehaviour : MonoBehaviour
     /// </summary>
     private void Continue()
     {
-        if(OnContinueEventClick != null)
+        if (OnContinueEventClick != null)
         {
             OnContinueEventClick();
         }
     }
-    
-
 
 }
