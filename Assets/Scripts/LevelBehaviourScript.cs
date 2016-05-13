@@ -18,6 +18,7 @@ public class LevelBehaviourScript : MonoBehaviour
     [Header("UI's")]
     public InGameUiBehaviourScript InGameUi;
     public GameOverUIBehaviour GameOverUi;
+    public AlertBehaviour Alert;
 
     // propriedades privadas
     private int score = 0;
@@ -64,8 +65,9 @@ public class LevelBehaviourScript : MonoBehaviour
     {
         // adiciona uma rodada ao simon        
         this.Simon.AddLight();
-        // executa o simon
-        this.Simon.Play();
+        //inicia
+        Alert.Text = "Memorize a sequência.";
+        Invoke("PlaySimon",1f);
     }
     /// <summary>
     /// Manipula o evento de termino da sequencia do simon
@@ -74,6 +76,8 @@ public class LevelBehaviourScript : MonoBehaviour
     /// <param name="simon"></param>
     private void HandlerEndPlaySimon(SimonBehaviourScript simon)
     {
+        Alert.Text = "Sua vez.";
+        
         // libera a rodada para o jogador
         playerTurn = true;
         // inicia o temporizador
@@ -86,6 +90,8 @@ public class LevelBehaviourScript : MonoBehaviour
     /// <param name="simon"></param>
     private void HandlerStartPlaySimon(SimonBehaviourScript simon)
     {
+        Alert.Text = "Memorize a sequência.";
+        
         // trava a jogada do player
         playerTurn = false;
 
@@ -167,6 +173,7 @@ public class LevelBehaviourScript : MonoBehaviour
     /// </summary>
     private void PlaySimon()
     {
+        
         Simon.Play();
     }
 
@@ -176,6 +183,8 @@ public class LevelBehaviourScript : MonoBehaviour
     /// </summary>
     private void LevelUp()
     {
+
+        Alert.Text = "Level Up!";
         // toca o audio
         _audioSource.PlayOneShot(ac_levelup);
         // reseta o timer
@@ -245,10 +254,11 @@ public class LevelBehaviourScript : MonoBehaviour
     /// </summary>
     private void Error()
     {
+        Alert.Text = "Ops! Tente novamente.";
         // interrompe a jogada do player
         playerTurn = false;
         // pausa o timer
-        this.Timer.Pause();
+        Timer.Stop();
         // quebra o combo
         ComboBreak();
         //reinicia
@@ -278,5 +288,6 @@ public class LevelBehaviourScript : MonoBehaviour
         SimonBehaviourScript.OnEndPlay -= HandlerEndPlaySimon;
         SimonBehaviourScript.OnStartPlay -= HandlerStartPlaySimon;
         TimerBehaviourScript.OnOverTime -= HandlerOverTime;
+        GameOverUIBehaviour.OnRestartClick -= Restart;
     }
 }
