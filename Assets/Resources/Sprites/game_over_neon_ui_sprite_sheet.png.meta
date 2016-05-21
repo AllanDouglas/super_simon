@@ -1,0 +1,278 @@
+fileFormatVersion: 2
+guid: 5c6e92efccf781f43871ca72d27524df
+timeCreated: 1463803881
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: game_over_neon_ui_sprite_sheet_0
+    21300002: game_over_neon_ui_sprite_sheet_1
+    21300004: game_over_neon_ui_sprite_sheet_2
+    21300006: game_over_neon_ui_sprite_sheet_3
+    21300008: game_over_neon_ui_sprite_sheet_4
+    21300010: game_over_neon_ui_sprite_sheet_5
+    21300012: game_over_neon_ui_sprite_sheet_6
+    21300014: game_over_neon_ui_sprite_sheet_7
+    21300016: game_over_neon_ui_sprite_sheet_8
+    21300018: game_over_neon_ui_sprite_sheet_9
+    21300020: game_over_neon_ui_sprite_sheet_10
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: game_over_neon_ui_sprite_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 772
+        width: 464
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -229, y: 48}
+        - {x: -232, y: 45}
+        - {x: -232, y: -45}
+        - {x: -230, y: -48}
+        - {x: 229, y: -48}
+        - {x: 232, y: -45}
+        - {x: 232, y: 45}
+        - {x: 229, y: 48}
+    - name: game_over_neon_ui_sprite_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 657
+        width: 49
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24.5, y: 25}
+        - {x: -24.5, y: -25}
+        - {x: 24.5, y: -25}
+        - {x: 24.5, y: 25}
+    - name: game_over_neon_ui_sprite_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 657
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24.5, y: 24.5}
+        - {x: -24.5, y: -24.5}
+        - {x: 23.5, y: -24.5}
+        - {x: 24.5, y: -22.5}
+        - {x: 24.5, y: 24.5}
+    - name: game_over_neon_ui_sprite_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 657
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24.5, y: 24.5}
+        - {x: -24.5, y: -24.5}
+        - {x: 24.5, y: -24.5}
+        - {x: 24.5, y: 24.5}
+    - name: game_over_neon_ui_sprite_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 566
+        width: 256
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -128, y: 42}
+        - {x: -128, y: -34}
+        - {x: -121, y: -42}
+        - {x: 128, y: -42}
+        - {x: 128, y: 40}
+        - {x: 124, y: 42}
+      - - {x: -105, y: -13}
+        - {x: -104, y: 21}
+        - {x: 105, y: 14}
+        - {x: 104, y: -20}
+    - name: game_over_neon_ui_sprite_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 343
+        width: 431
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -208.5, y: 64}
+        - {x: -215.5, y: 59}
+        - {x: -215.5, y: -55}
+        - {x: -208.5, y: -62}
+        - {x: -204.5, y: -64}
+        - {x: 202.5, y: -64}
+        - {x: 215.5, y: -57}
+        - {x: 215.5, y: 57}
+        - {x: 209.5, y: 64}
+      - - {x: -186.5, y: 37}
+        - {x: 186.5, y: 36}
+        - {x: 185.5, y: -37}
+        - {x: -187.5, y: -36}
+    - name: game_over_neon_ui_sprite_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 230
+        width: 426
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -204, y: 42}
+        - {x: -213, y: 38}
+        - {x: -213, y: -36}
+        - {x: -210, y: -42}
+        - {x: 206, y: -42}
+        - {x: 213, y: -37}
+        - {x: 213, y: 37}
+        - {x: 212, y: 42}
+      - - {x: -187, y: 16}
+        - {x: 187, y: 16}
+        - {x: 187, y: -16}
+        - {x: -187, y: -16}
+    - name: game_over_neon_ui_sprite_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 168
+        width: 395
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 192.5, y: 27.5}
+        - {x: -194.5, y: 27.5}
+        - {x: -197.5, y: 26.5}
+        - {x: -197.5, y: -27.5}
+        - {x: 193.5, y: -27.5}
+        - {x: 197.5, y: -23.5}
+        - {x: 197.5, y: 23.5}
+    - name: game_over_neon_ui_sprite_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 64
+        width: 426
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -213, y: 49.5}
+        - {x: -213, y: -49.5}
+        - {x: 202, y: -49.5}
+        - {x: 213, y: -42.5}
+        - {x: 213, y: 49.5}
+      - - {x: -180, y: 23.5}
+        - {x: 179, y: 23.5}
+        - {x: 180, y: 22.5}
+        - {x: 179, y: -23.5}
+        - {x: -180, y: -23.5}
+        - {x: -181, y: -22.5}
+    - name: game_over_neon_ui_sprite_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 45
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19.5, y: 20.5}
+        - {x: -22.5, y: 19.5}
+        - {x: -22.5, y: -18.5}
+        - {x: -16.5, y: -20.5}
+        - {x: 18.5, y: -20.5}
+        - {x: 22.5, y: -16.5}
+        - {x: 22.5, y: 17.5}
+        - {x: 21.5, y: 20.5}
+    - name: game_over_neon_ui_sprite_sheet_10
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 3
+        width: 48
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: 24.5}
+        - {x: -24, y: 16.5}
+        - {x: -24, y: -1.5}
+        - {x: -13, y: -24.5}
+        - {x: 13, y: -24.5}
+        - {x: 24, y: -18.5}
+        - {x: 24, y: 24.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

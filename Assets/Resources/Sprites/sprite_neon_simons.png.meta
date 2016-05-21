@@ -1,0 +1,374 @@
+fileFormatVersion: 2
+guid: be85ffa121f23064ea95abad8e084546
+timeCreated: 1463802631
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: sprite_neon_simons_0
+    21300002: sprite_neon_simons_1
+    21300004: sprite_neon_simons_2
+    21300006: sprite_neon_simons_3
+    21300008: sprite_neon_simons_4
+    21300010: sprite_neon_simons_5
+    21300012: sprite_neon_simons_6
+    21300014: sprite_neon_simons_7
+    21300016: sprite_neon_simons_8
+    21300018: sprite_neon_simons_9
+    21300020: sprite_neon_simons_10
+    21300022: sprite_neon_simons_11
+    21300024: sprite_neon_simons_12
+    21300026: sprite_neon_simons_13
+    21300028: sprite_neon_simons_14
+    21300030: sprite_neon_simons_15
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: sprite_neon_simons_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 515
+        width: 168
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -55, y: 83}
+        - {x: -65, y: 80}
+        - {x: -83, y: 58}
+        - {x: -84, y: 54}
+        - {x: -84, y: -83}
+        - {x: 24, y: -83}
+        - {x: 52, y: -37}
+        - {x: 84, y: -24}
+        - {x: 84, y: 83}
+    - name: sprite_neon_simons_1
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 515
+        width: 169
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 56.5, y: 83}
+        - {x: -84.5, y: 83}
+        - {x: -84.5, y: -24}
+        - {x: -36.5, y: -52}
+        - {x: -23.5, y: -82}
+        - {x: -22.5, y: -83}
+        - {x: 84.5, y: -83}
+        - {x: 84.5, y: 59}
+        - {x: 63.5, y: 81}
+    - name: sprite_neon_simons_2
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 509
+        width: 177
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -59.5, y: 87}
+        - {x: -79.5, y: 73}
+        - {x: -88.5, y: 58}
+        - {x: -88.5, y: -87}
+        - {x: 29.5, y: -87}
+        - {x: 53.5, y: -42}
+        - {x: 88.5, y: -26}
+        - {x: 88.5, y: 87}
+    - name: sprite_neon_simons_3
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 509
+        width: 176
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -88, y: 87}
+        - {x: -88, y: -27}
+        - {x: -52, y: -46}
+        - {x: -27, y: -84}
+        - {x: -24, y: -87}
+        - {x: 88, y: -87}
+        - {x: 88, y: 64}
+        - {x: 68, y: 87}
+    - name: sprite_neon_simons_4
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 358
+        width: 132
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -63, y: 7}
+        - {x: -66, y: -15}
+        - {x: -66, y: -65}
+        - {x: 10, y: -65}
+        - {x: 66, y: -11}
+        - {x: 66, y: 65}
+        - {x: 25, y: 65}
+        - {x: -2, y: 61}
+    - name: sprite_neon_simons_5
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 358
+        width: 132
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -66, y: 65}
+        - {x: -66, y: -12}
+        - {x: -9, y: -65}
+        - {x: 66, y: -65}
+        - {x: 66, y: -21}
+        - {x: 45, y: 19}
+        - {x: -21, y: 65}
+    - name: sprite_neon_simons_6
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 354
+        width: 147
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 24.5, y: 73}
+        - {x: -11.5, y: 60}
+        - {x: -72.5, y: -10}
+        - {x: -73.5, y: -17}
+        - {x: -73.5, y: -73}
+        - {x: 18.5, y: -73}
+        - {x: 73.5, y: -19}
+        - {x: 73.5, y: 73}
+    - name: sprite_neon_simons_7
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 354
+        width: 147
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -73.5, y: 73}
+        - {x: -73.5, y: -18}
+        - {x: -17.5, y: -73}
+        - {x: 73.5, y: -73}
+        - {x: 73.5, y: 11}
+        - {x: 8.5, y: 73}
+    - name: sprite_neon_simons_8
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 193
+        width: 132
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -66, y: 65}
+        - {x: -66, y: 27}
+        - {x: -36, y: -43}
+        - {x: 21, y: -65}
+        - {x: 66, y: -65}
+        - {x: 66, y: 12}
+        - {x: 10, y: 65}
+    - name: sprite_neon_simons_9
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 193
+        width: 132
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11, y: 65}
+        - {x: -66, y: 11}
+        - {x: -66, y: -65}
+        - {x: 15, y: -65}
+        - {x: 66, y: 22}
+        - {x: 66, y: 65}
+    - name: sprite_neon_simons_10
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 186
+        width: 147
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -73.5, y: 73}
+        - {x: -73.5, y: -11}
+        - {x: -13.5, y: -73}
+        - {x: 73.5, y: -73}
+        - {x: 73.5, y: 18}
+        - {x: 13.5, y: 73}
+    - name: sprite_neon_simons_11
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 184
+        width: 147
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 73.5, y: 27}
+        - {x: 73.5, y: 73}
+        - {x: -19.5, y: 73}
+        - {x: -73.5, y: 14}
+        - {x: -73.5, y: -73}
+        - {x: -30.5, y: -73}
+        - {x: -13.5, y: -66}
+        - {x: 24.5, y: -44}
+        - {x: 70.5, y: 8}
+    - name: sprite_neon_simons_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 9
+        width: 168
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -84, y: 83}
+        - {x: -84, y: -52}
+        - {x: -83, y: -55}
+        - {x: -77, y: -66}
+        - {x: -64, y: -78}
+        - {x: -53, y: -83}
+        - {x: 84, y: -83}
+        - {x: 84, y: 25}
+        - {x: 23, y: 83}
+    - name: sprite_neon_simons_13
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 9
+        width: 169
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 84.5, y: 83}
+        - {x: -23.5, y: 83}
+        - {x: -37.5, y: 51}
+        - {x: -84.5, y: 24}
+        - {x: -84.5, y: -83}
+        - {x: 54.5, y: -83}
+        - {x: 66.5, y: -78}
+        - {x: 79.5, y: -64}
+        - {x: 84.5, y: -53}
+    - name: sprite_neon_simons_14
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 0
+        width: 177
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 38.5, y: 56}
+        - {x: 30.5, y: 87}
+        - {x: -88.5, y: 87}
+        - {x: -88.5, y: -60}
+        - {x: -69.5, y: -87}
+        - {x: 88.5, y: -87}
+        - {x: 88.5, y: 26}
+        - {x: 87.5, y: 28}
+    - name: sprite_neon_simons_15
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 0
+        width: 176
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26, y: 87}
+        - {x: -53, y: 47}
+        - {x: -88, y: 26}
+        - {x: -88, y: -87}
+        - {x: 55, y: -87}
+        - {x: 73, y: -81}
+        - {x: 88, y: -58}
+        - {x: 88, y: 87}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

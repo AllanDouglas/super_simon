@@ -5,8 +5,8 @@ using System.Collections;
 public class LevelBehaviourScript : MonoBehaviour
 {
     // CONTANTES
-    private const string LEVEL_PLAYER_PREFS = "_LEVEL_";
-    private const string SCORE_PLAYER_PREFS = "_SCORE_";
+    private readonly string LEVEL_PLAYER_PREFS = "_LEVEL_";
+    private readonly string SCORE_PLAYER_PREFS = "_SCORE_";
 
     //propriedades publicas
     [Header("Tempo incrementador por level")]
@@ -20,11 +20,15 @@ public class LevelBehaviourScript : MonoBehaviour
     public GameOverUIBehaviour GameOverUi;
     public AlertBehaviour Alert;
 
+	[Header("Controles")]
+	public int levelModulator  = 12;
+
     // propriedades privadas
     private int score = 0;
     private int level = 1;
     private int combo = 1;
     private int lifes = 3;
+	private int continues  = 3;
     private int comboCounter = 0;
     private bool playerTurn = false;
 
@@ -120,10 +124,11 @@ public class LevelBehaviourScript : MonoBehaviour
         GameOverUi.TextBestLevel = PlayerPrefs.GetInt(LEVEL_PLAYER_PREFS).ToString();
         GameOverUi.TextBestScore = PlayerPrefs.GetInt(SCORE_PLAYER_PREFS).ToString();
 
-        GameOverUi.LifeCounter = lifes;
+		GameOverUi.LifeCounter = continues;
 
         GameOverUi.gameObject.SetActive(true);
         Simon.gameObject.SetActive(false);
+		InGameUi.gameObject.SetActive (false);
 
     }
 
@@ -173,7 +178,6 @@ public class LevelBehaviourScript : MonoBehaviour
     /// </summary>
     private void PlaySimon()
     {
-        
         Simon.Play();
     }
 
@@ -196,6 +200,13 @@ public class LevelBehaviourScript : MonoBehaviour
         Timer.MaxTime = Timer.MaxTime + incrementTime;
         // adiciona uma luz no simon
         Simon.AddLight();
+
+		// se o nivel 
+		if (level >= levelModulator) 
+		{
+			Simon.Replace ();
+		}
+
         // toca a sequencia novamente;
         Invoke("PlaySimon", 2f);
 

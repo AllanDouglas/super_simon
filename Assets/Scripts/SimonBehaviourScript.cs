@@ -108,6 +108,19 @@ public class SimonBehaviourScript : MonoBehaviour {
         yield return new WaitForSeconds(0.5f);
 
     }
+	/// <summary>
+	/// Troca um elemento da sequencia por outro aleatorio
+	/// </summary>
+	public void Replace(){
+		// randomiza uma posicao das luzes possives
+		int index = Random.Range(0, lights.Count);
+		LightBehaviourScript light = lights [index];
+		// pega uma posicao aleatorio da sequencia
+		int seqRandom = Random.Range(0, sequence.Count);
+		// adiciona na sequencia
+		sequence[seqRandom] = light;
+
+	}
 
 	/// <summary>
 	/// Recupera a Light atual e adianta o cursor
