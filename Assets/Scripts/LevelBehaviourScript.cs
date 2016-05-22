@@ -20,15 +20,15 @@ public class LevelBehaviourScript : MonoBehaviour
     public GameOverUIBehaviour GameOverUi;
     public AlertBehaviour Alert;
 
-	[Header("Controles")]
-	public int levelModulator  = 12;
+    [Header("Controles")]
+    public int levelModulator = 12;
 
     // propriedades privadas
     private int score = 0;
     private int level = 1;
     private int combo = 1;
     private int lifes = 3;
-	private int continues  = 3;
+    private int continues = 3;
     private int comboCounter = 0;
     private bool playerTurn = false;
 
@@ -71,7 +71,7 @@ public class LevelBehaviourScript : MonoBehaviour
         this.Simon.AddLight();
         //inicia
         Alert.Text = "Memorize a sequência.";
-        Invoke("PlaySimon",1f);
+        Invoke("PlaySimon", 1f);
     }
     /// <summary>
     /// Manipula o evento de termino da sequencia do simon
@@ -81,7 +81,7 @@ public class LevelBehaviourScript : MonoBehaviour
     private void HandlerEndPlaySimon(SimonBehaviourScript simon)
     {
         Alert.Text = "Sua vez.";
-        
+
         // libera a rodada para o jogador
         playerTurn = true;
         // inicia o temporizador
@@ -95,7 +95,7 @@ public class LevelBehaviourScript : MonoBehaviour
     private void HandlerStartPlaySimon(SimonBehaviourScript simon)
     {
         Alert.Text = "Memorize a sequência.";
-        
+
         // trava a jogada do player
         playerTurn = false;
 
@@ -105,30 +105,9 @@ public class LevelBehaviourScript : MonoBehaviour
     /// </summary>
     private void HandlerOverTime()
     {
-        _audioSource.PlayOneShot(ac_alarm); // toca o som
-
-        // ############ seta os records
-        if (level > PlayerPrefs.GetInt(LEVEL_PLAYER_PREFS))
-        {
-            PlayerPrefs.SetInt(LEVEL_PLAYER_PREFS, level);
-        }
-        if (score > PlayerPrefs.GetInt(SCORE_PLAYER_PREFS))
-        {
-            PlayerPrefs.SetInt(SCORE_PLAYER_PREFS, score);
-        }
-        // ############ seta os records
-
-        GameOverUi.TextLevel = level.ToString();
-        GameOverUi.TextScore = score.ToString();
-
-        GameOverUi.TextBestLevel = PlayerPrefs.GetInt(LEVEL_PLAYER_PREFS).ToString();
-        GameOverUi.TextBestScore = PlayerPrefs.GetInt(SCORE_PLAYER_PREFS).ToString();
-
-		GameOverUi.LifeCounter = continues;
-
-        GameOverUi.gameObject.SetActive(true);
-        Simon.gameObject.SetActive(false);
-		InGameUi.gameObject.SetActive (false);
+        _audioSource.PlayOneShot(ac_alarm); // toca o som da sirene
+        // game over
+        GameOver();
 
     }
 
@@ -196,16 +175,21 @@ public class LevelBehaviourScript : MonoBehaviour
         // incrementa o level
         level++;
         InGameUi.Level = level;
-        // incrementa o tempo
-        Timer.MaxTime = Timer.MaxTime + incrementTime;
-        // adiciona uma luz no simon
-        Simon.AddLight();
 
-		// se o nivel 
-		if (level >= levelModulator) 
-		{
-			Simon.Replace ();
-		}
+
+        // se o nivel for menor que o modelador
+        if (level < levelModulator)
+        {
+            // incrementa o tempo
+            Timer.MaxTime = Timer.MaxTime + incrementTime;
+            // adiciona uma luz no simon
+            Simon.AddLight();
+        }
+        else
+        {
+            //se não troca uma Light
+            Simon.ChangeOne();
+        }
 
         // toca a sequencia novamente;
         Invoke("PlaySimon", 2f);
@@ -261,10 +245,57 @@ public class LevelBehaviourScript : MonoBehaviour
 
     }
     /// <summary>
+    /// Game Over
+    /// </summary>
+    private void GameOver()
+    {
+
+
+        GameOverUi.TextLevel = level.ToString();
+        GameOverUi.TextScore = score.ToString();
+
+        GameOverUi.TextBestLevel = PlayerPrefs.GetInt(LEVEL_PLAYER_PREFS).ToString();
+        GameOverUi.TextBestScore = PlayerPrefs.GetInt(SCORE_PLAYER_PREFS).ToString();
+
+        GameOverUi.LifeCounter = continues;
+
+        GameOverUi.gameObject.SetActive(true);
+        Simon.gameObject.SetActive(false);
+        Alert.Text = "";
+    }
+    /// <summary>
+    /// Grava os records na memoria
+    /// </summary>
+    private void SaveRecords()
+    {
+        // ############ seta os records
+        if (level > PlayerPrefs.GetInt(LEVEL_PLAYER_PREFS))
+        {
+            PlayerPrefs.SetInt(LEVEL_PLAYER_PREFS, level);
+        }
+        if (score > PlayerPrefs.GetInt(SCORE_PLAYER_PREFS))
+        {
+            PlayerPrefs.SetInt(SCORE_PLAYER_PREFS, score);
+        }
+        // ############ seta os records
+    }
+
+    /// <summary>
     /// Erro
     /// </summary>
     private void Error()
     {
+        //remove uma vida
+        InGameUi.RemoveLife();
+        this.lifes--;
+        // verifica se ainda tem vidas 
+        //se não houver gameover
+        if (lifes <= 0)
+        {
+            GameOver();
+            return;
+        }
+
         Alert.Text = "Ops! Tente novamente.";
         // interrompe a jogada do player
         playerTurn = false;

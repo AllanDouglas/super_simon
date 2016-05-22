@@ -15,7 +15,9 @@ public class InGameUiBehaviourScript : MonoBehaviour {
     private Text combo; // label do combo
     [Header("Contadores")]
     [SerializeField]
-    private Image[] comboCounters; // array de imagens para representar os contadores 
+    private Image[] comboCounters; // array de imagens para representar os contadores de combo
+    [SerializeField]
+    private Image[] lifeCounters; // array de imagens para representar os contadores de vida
     [Header("Colors")]
     [SerializeField]
     private Color activeColor; // cor quando o contador está ativo
@@ -38,7 +40,7 @@ public class InGameUiBehaviourScript : MonoBehaviour {
     /// </summary>
     public int Score
     {
-        set { score.text = value.ToString(); }        
+        set { score.text = value.ToString("D6"); }        
     }
     /// <summary>
     /// Configura o level
@@ -76,6 +78,42 @@ public class InGameUiBehaviourScript : MonoBehaviour {
         for (int i = 0; i < this.comboCounters.Length; i++)
         {
             comboCounters[i].color = this.inactiveColor;
+        }
+    }
+    /// <summary>
+    /// Recupera uma vida ao contador
+    /// </summary>
+    public void AddLife()
+    {
+        for (int i = 0; i < this.lifeCounters.Length; i++)
+        {
+            if(lifeCounters[i].gameObject.activeSelf == false)
+                lifeCounters[i].gameObject.SetActive(true);
+        }
+    }
+    /// <summary>
+    /// Retira uma vida do contador
+    /// </summary>
+    public void RemoveLife()
+    {
+        for (int i = 0; i < this.lifeCounters.Length; i++)
+        {
+            //executa animação da retirada da vida
+            if (lifeCounters[i].gameObject.activeSelf == true)
+            {
+                lifeCounters[i].gameObject.SetActive(false);
+                break;
+            }
+        }
+    }
+    /// <summary>
+    /// Renova todas as vidas do contador
+    /// </summary>
+    public void ResetLifeCounters()
+    {
+        for (int i = 0; i < this.lifeCounters.Length; i++)
+        {
+            lifeCounters[i].gameObject.SetActive(true);
         }
     }
 

@@ -111,7 +111,7 @@ public class SimonBehaviourScript : MonoBehaviour {
 	/// <summary>
 	/// Troca um elemento da sequencia por outro aleatorio
 	/// </summary>
-	public void Replace(){
+	public void ChangeOne(){
 		// randomiza uma posicao das luzes possives
 		int index = Random.Range(0, lights.Count);
 		LightBehaviourScript light = lights [index];
