@@ -32,6 +32,9 @@ public class InGameUiBehaviourScript : MonoBehaviour {
     [SerializeField]
     private Sprite audioOffSprite;
 
+    [SerializeField]
+    private ParticleSystem removerCoracao;
+
     // controle do audio
     private bool isMute = false;
 
@@ -101,6 +104,10 @@ public class InGameUiBehaviourScript : MonoBehaviour {
             //executa animação da retirada da vida
             if (lifeCounters[i].gameObject.activeSelf == true)
             {
+                Camera.main.ScreenToWorldPoint(lifeCounters[i].gameObject.GetComponent<RectTransform>().position);
+
+
+
                 lifeCounters[i].gameObject.SetActive(false);
                 break;
             }
