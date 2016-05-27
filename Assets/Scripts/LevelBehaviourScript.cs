@@ -28,7 +28,7 @@ public class LevelBehaviourScript : MonoBehaviour
     private int level = 1;
     private int combo = 1;
     private int lifes = 3;
-    private int continues = 3;
+    private int continues = 1;
     private int comboCounter = 0;
     private bool playerTurn = false;
 
@@ -59,6 +59,8 @@ public class LevelBehaviourScript : MonoBehaviour
         SimonBehaviourScript.OnStartPlay += HandlerStartPlaySimon;
         TimerBehaviourScript.OnOverTime += HandlerOverTime;
         GameOverUIBehaviour.OnRestartClick += Restart;
+        GameOverUIBehaviour.OnContinueClick += Continue;
+
 
 
     }
@@ -70,9 +72,31 @@ public class LevelBehaviourScript : MonoBehaviour
         // adiciona uma rodada ao simon        
         this.Simon.AddLight();
         //inicia
-        Alert.Text = "Memorize a sequência.";
+        Alert.Text = "Memorize the sequence.";
         Invoke("PlaySimon", 1f);
     }
+    /// <summary>
+    /// Retoma a partida se ainda houveram continues
+    /// </summary>
+    public void Continue()
+    {
+        if (continues <= 0)
+            return;
+
+        --continues; // desconta o continue
+        if (lifes < 3) // verifica se a quantida de vidas é menor que o maximo
+        {
+            lifes = 1; // devolve uma vida 
+            InGameUi.AddLife(); // exibe a vida
+        }
+        
+        GameOverUi.gameObject.SetActive(false);
+        Simon.gameObject.SetActive(true);
+
+        Alert.Text = "Memorize the sequence.";
+        Invoke("PlaySimon", 1f);
+    }
+
     /// <summary>
     /// Manipula o evento de termino da sequencia do simon
     /// para liberar a rodada do jogado
@@ -80,7 +104,7 @@ public class LevelBehaviourScript : MonoBehaviour
     /// <param name="simon"></param>
     private void HandlerEndPlaySimon(SimonBehaviourScript simon)
     {
-        Alert.Text = "Sua vez.";
+        Alert.Text = "You turn.";
 
         // libera a rodada para o jogador
         playerTurn = true;
@@ -94,7 +118,7 @@ public class LevelBehaviourScript : MonoBehaviour
     /// <param name="simon"></param>
     private void HandlerStartPlaySimon(SimonBehaviourScript simon)
     {
-        Alert.Text = "Memorize a sequência.";
+        Alert.Text = "Memorize the sequence.";
 
         // trava a jogada do player
         playerTurn = false;
@@ -250,14 +274,13 @@ public class LevelBehaviourScript : MonoBehaviour
     private void GameOver()
     {
 
-
         GameOverUi.TextLevel = level.ToString();
         GameOverUi.TextScore = score.ToString();
 
         GameOverUi.TextBestLevel = PlayerPrefs.GetInt(LEVEL_PLAYER_PREFS).ToString();
         GameOverUi.TextBestScore = PlayerPrefs.GetInt(SCORE_PLAYER_PREFS).ToString();
 
-        GameOverUi.LifeCounter = continues;
+        GameOverUi.TextContinues = continues.ToString();
 
         GameOverUi.gameObject.SetActive(true);
         Simon.gameObject.SetActive(false);
@@ -296,7 +319,7 @@ public class LevelBehaviourScript : MonoBehaviour
             return;
         }
 
-        Alert.Text = "Ops! Tente novamente.";
+        Alert.Text = "Ops! Try again.";
         // interrompe a jogada do player
         playerTurn = false;
         // pausa o timer
@@ -309,7 +332,7 @@ public class LevelBehaviourScript : MonoBehaviour
     /// <summary>
     /// Reinicia o level
     /// </summary>
-    private void Restart()
+    public void Restart()
     {
         UnityEngine.
             SceneManagement.
@@ -331,5 +354,6 @@ public class LevelBehaviourScript : MonoBehaviour
         SimonBehaviourScript.OnStartPlay -= HandlerStartPlaySimon;
         TimerBehaviourScript.OnOverTime -= HandlerOverTime;
         GameOverUIBehaviour.OnRestartClick -= Restart;
+        GameOverUIBehaviour.OnContinueClick -= Continue;
     }
 }

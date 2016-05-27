@@ -11,12 +11,13 @@ public class LifeUiBehaviour : MonoBehaviour
     void Start()
     {
         this._animator = GetComponent<Animator>();
+        this._animator.enabled = false;
     }
 
     /// <summary>
     /// Executa animação
     /// </summary>
-    public void Animate()
+    public void Remove()
     {
         this._animator.enabled = true;
     }
@@ -25,6 +26,9 @@ public class LifeUiBehaviour : MonoBehaviour
     /// </summary>
     public void Desactivate()
     {
+        this._animator.enabled = false;
+        this.transform.localScale = new Vector3(1, 1, 1);
+        this.transform.localRotation = Quaternion.identity;
         gameObject.SetActive(false);
     }
   

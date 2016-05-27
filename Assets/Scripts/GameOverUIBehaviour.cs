@@ -11,7 +11,7 @@ public class GameOverUIBehaviour : MonoBehaviour
     // eventos
     public delegate void GameOverUiEvent();
     public static event GameOverUiEvent OnRestartClick;
-    public static event GameOverUiEvent OnContinueEventClick;
+    public static event GameOverUiEvent OnContinueClick;
 
     // label score
     // label nível
@@ -24,6 +24,8 @@ public class GameOverUIBehaviour : MonoBehaviour
     private Text labelLevel;
     [SerializeField]
     private Text labelBestLevel;
+    [SerializeField]
+    private Text labelContinues;
     //restart button
     [Header("Buttons")]
     [SerializeField]
@@ -65,6 +67,20 @@ public class GameOverUIBehaviour : MonoBehaviour
         set
         {
             labelScore.text = "Score: " + value;
+        }
+    }
+    /// <summary>
+    /// Texto do label do continue
+    /// </summary>
+    public string TextContinues
+    {
+        get
+        {
+            return labelContinues.text;
+        }
+        set
+        {
+            labelContinues.text = value;
         }
     }
 
@@ -141,10 +157,12 @@ public class GameOverUIBehaviour : MonoBehaviour
     /// </summary>
     private void Continue()
     {
-        if (OnContinueEventClick != null)
+        if (OnContinueClick != null)
         {
-            OnContinueEventClick();
+            OnContinueClick();
         }
     }
+
+   
 
 }

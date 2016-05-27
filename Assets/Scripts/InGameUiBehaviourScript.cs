@@ -13,27 +13,27 @@ public class InGameUiBehaviourScript : MonoBehaviour {
     private Text level; // label do level
     [SerializeField]
     private Text combo; // label do combo
+    [SerializeField]
+    private Text continues; // label da quantidade de continues
     [Header("Contadores")]
     [SerializeField]
     private Image[] comboCounters; // array de imagens para representar os contadores de combo
     [SerializeField]
-    private Image[] lifeCounters; // array de imagens para representar os contadores de vida
-    [Header("Colors")]
+    private LifeUiBehaviour[] lifeCounters; // array de imagens para representar os contadores de vida
+    [Header("Colors combo counter")]
     [SerializeField]
     private Color activeColor; // cor quando o contador está ativo
     [SerializeField]
     private Color inactiveColor; // cor quando o contador está inativo
     // botão mute
-    [Header("Mute Button")]
+    [Header("Button's")]
     [SerializeField]
     private Button buttonMute;
     [SerializeField]
     private Sprite audioOnSprite;
     [SerializeField]
     private Sprite audioOffSprite;
-
-    [SerializeField]
-    private ParticleSystem removerCoracao;
+   
 
     // controle do audio
     private bool isMute = false;
@@ -90,8 +90,11 @@ public class InGameUiBehaviourScript : MonoBehaviour {
     {
         for (int i = 0; i < this.lifeCounters.Length; i++)
         {
-            if(lifeCounters[i].gameObject.activeSelf == false)
+            if (lifeCounters[i].gameObject.activeSelf == false)
+            {
                 lifeCounters[i].gameObject.SetActive(true);
+                break;
+            }
         }
     }
     /// <summary>
@@ -104,11 +107,7 @@ public class InGameUiBehaviourScript : MonoBehaviour {
             //executa animação da retirada da vida
             if (lifeCounters[i].gameObject.activeSelf == true)
             {
-                Camera.main.ScreenToWorldPoint(lifeCounters[i].gameObject.GetComponent<RectTransform>().position);
-
-
-
-                lifeCounters[i].gameObject.SetActive(false);
+                lifeCounters[i].Remove();
                 break;
             }
         }
@@ -133,7 +132,7 @@ public class InGameUiBehaviourScript : MonoBehaviour {
     /// <summary>
     /// muta
     /// </summary>
-    private void Mute()
+    public void Mute()
     {
         isMute = !isMute;
         Camera.main.GetComponent<AudioListener>().enabled = !isMute;
