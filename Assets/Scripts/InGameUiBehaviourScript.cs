@@ -56,6 +56,8 @@ public class InGameUiBehaviourScript : MonoBehaviour
     {
         set { score.text = value.ToString("D6"); }
     }
+   
+
     /// <summary>
     /// Configura o level
     /// </summary>

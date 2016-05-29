@@ -32,7 +32,7 @@ public class LevelBehaviourScript : MonoBehaviour
     private int comboCounter = 0;
     private bool isPlayerTurn = false;
     private bool isPlaying = true;
-
+    private UnityAdsHelper AdsHelper = new UnityAdsHelper();
     //audios
     private AudioClip ac_alarm, ac_comboBreaker, ac_levelup;
 
@@ -56,13 +56,19 @@ public class LevelBehaviourScript : MonoBehaviour
         InGameUi.Score = score;
         // configura o evento de captura
         LightBehaviourScript.OnTouchEvent += HandlerTouchLight;
+        // Simon
         SimonBehaviourScript.OnEndPlay += HandlerEndPlaySimon;
         SimonBehaviourScript.OnStartPlay += HandlerStartPlaySimon;
+        // Timer
         TimerBehaviourScript.OnOverTime += HandlerOverTime;
+        // Game Over 
         GameOverUIBehaviour.OnRestartClick += Restart;
-        GameOverUIBehaviour.OnContinueClick += Continue;
+        GameOverUIBehaviour.OnContinueClick += HandlerContinueEvent;
+        // InGame
         InGameUiBehaviourScript.OnPauseClicked += HandlerPauseEvent;
         InGameUiBehaviourScript.OnMuteClicked += HandlerMuteEvent;
+        // ADS
+        UnityAdsHelper.OnFinished += HandlerVideoFinished;
 
     }
     /// <summary>
@@ -74,6 +80,30 @@ public class LevelBehaviourScript : MonoBehaviour
         this.Simon.AddLight();
         Play();
     }
+    /// <summary>
+    /// Manipula o evento de vídeo completado
+    /// </summary>
+    private void HandlerVideoFinished()
+    {
+        this.continues = 3;
+    }
+
+    /// <summary>
+    /// Manipula o evento de click no botão continue
+    /// </summary>
+    private void HandlerContinueEvent()
+    {
+        if (continues > 0)
+        {
+            Debug.Log("continuando");
+            Continue();
+            return;
+        }
+        Debug.Log("Exibindo o vídeo de ADS");
+        // exibe o vídeo do unity ads
+        this.AdsHelper.Show();
+    }
+
     /// <summary>
     /// Retoma a partida se ainda houveram continues
     /// </summary>
@@ -325,7 +355,18 @@ public class LevelBehaviourScript : MonoBehaviour
         GameOverUi.TextBestLevel = PlayerPrefs.GetInt(LEVEL_PLAYER_PREFS).ToString();
         GameOverUi.TextBestScore = PlayerPrefs.GetInt(SCORE_PLAYER_PREFS).ToString();
 
+
         GameOverUi.TextContinues = continues.ToString();
+
+        if (continues > 0)
+        {
+            GameOverUi.ContinueLabelText = "Continue";
+        }
+        else
+        {
+            GameOverUi.ContinueLabelText = "Get Continues!";
+        }
+
 
         GameOverUi.gameObject.SetActive(true);
         Simon.gameObject.SetActive(false);
@@ -402,5 +443,6 @@ public class LevelBehaviourScript : MonoBehaviour
         GameOverUIBehaviour.OnContinueClick -= Continue;
         InGameUiBehaviourScript.OnPauseClicked -= HandlerPauseEvent;
         InGameUiBehaviourScript.OnMuteClicked -= HandlerMuteEvent;
+        UnityAdsHelper.OnFinished -= HandlerVideoFinished;
     }
 }

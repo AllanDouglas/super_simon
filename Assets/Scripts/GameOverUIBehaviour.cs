@@ -135,6 +135,22 @@ public class GameOverUIBehaviour : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Configura o texto do botão de resume
+    /// </summary>
+    public string ContinueLabelText
+    {
+        set
+        {
+            buttonContinue.GetComponentInChildren<Text>().text = value;
+        }
+        get
+        {
+            return buttonContinue.GetComponentInChildren<Text>().text;
+        }
+
+    }
+
     // Use this for initialization
     void Start()
     {
