@@ -10,6 +10,7 @@ public class TimerBehaviourScript : MonoBehaviour, ITimer
     public delegate void TimerEvent();
     public static event TimerEvent OnOverTime; // disparado quando o tempo chega a zero
 
+
     // tempo            
     [SerializeField]
     private float maxTime;
@@ -61,6 +62,13 @@ public class TimerBehaviourScript : MonoBehaviour, ITimer
         _slider.value = leftTime;
         StartCoroutine(Playing());
 
+    }
+    /// <summary>
+    /// Continua a contagem
+    /// </summary>
+    public void Resume()
+    {
+        isPlaying = true;
     }
 
     /// <summary>

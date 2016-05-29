@@ -1,9 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 /// <summary>
 /// Controle da UI In Game
 /// </summary>
-public class InGameUiBehaviourScript : MonoBehaviour {
+public class InGameUiBehaviourScript : MonoBehaviour
+{
+
+    //eventos    
+    public static event Action OnPauseClicked;
+    public static event Action<bool> OnMuteClicked;
 
     // fields
     [Header("Labels")]
@@ -28,12 +34,17 @@ public class InGameUiBehaviourScript : MonoBehaviour {
     // botão mute
     [Header("Button's")]
     [SerializeField]
+    private Button buttonResume;
+    [SerializeField]
+    private Button buttonPause;
+    [SerializeField]
     private Button buttonMute;
+    [Header("Sprites mute button")]
     [SerializeField]
     private Sprite audioOnSprite;
     [SerializeField]
     private Sprite audioOffSprite;
-   
+
 
     // controle do audio
     private bool isMute = false;
@@ -43,7 +54,7 @@ public class InGameUiBehaviourScript : MonoBehaviour {
     /// </summary>
     public int Score
     {
-        set { score.text = value.ToString("D6"); }        
+        set { score.text = value.ToString("D6"); }
     }
     /// <summary>
     /// Configura o level
@@ -68,7 +79,7 @@ public class InGameUiBehaviourScript : MonoBehaviour {
     {
         number = (number > this.comboCounters.Length) ? this.comboCounters.Length : number;
 
-        for(int i =0; i < number; i++)
+        for (int i = 0; i < number; i++)
         {
             comboCounters[i].color = this.activeColor;
         }
@@ -127,13 +138,22 @@ public class InGameUiBehaviourScript : MonoBehaviour {
     void Start()
     {
         ResetComboCounters();
-    }         
-    
+
+        buttonResume.gameObject.SetActive(false);
+
+    }
+
     /// <summary>
     /// muta
     /// </summary>
     public void Mute()
     {
+
+        if (OnMuteClicked != null)
+        {
+            OnMuteClicked(isMute);
+        }
+
         isMute = !isMute;
         Camera.main.GetComponent<AudioListener>().enabled = !isMute;
         if (isMute)
@@ -144,6 +164,20 @@ public class InGameUiBehaviourScript : MonoBehaviour {
         {
             buttonMute.image.sprite = audioOnSprite;
         }
+    }
+    /// <summary>
+    /// Pausa
+    /// </summary>
+    public void Pause()
+    {
+
+        if (OnPauseClicked != null)
+        {
+            OnPauseClicked();
+        }
+        // exibe interface de resume        
+        buttonResume.gameObject.SetActive(!buttonResume.gameObject.activeSelf);
+
     }
 
 }

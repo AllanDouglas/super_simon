@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: e01cf4f0607183b4db095f004b504914
-timeCreated: 1464316661
+timeCreated: 1464405650
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,8 @@ TextureImporter:
     21300002: game_over_neon_ui_buttons_sprite_sheet_1
     21300004: game_over_neon_ui_buttons_sprite_sheet_2
     21300006: game_over_neon_ui_buttons_sprite_sheet_3
+    21300008: game_over_neon_ui_buttons_sprite_sheet_4
+    21300010: game_over_neon_ui_buttons_sprite_sheet_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -66,13 +68,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -24, y: 24.5}
-        - {x: -24, y: -22.5}
-        - {x: -21, y: -23.5}
-        - {x: -19, y: -24.5}
-        - {x: 20, y: -24.5}
-        - {x: 24, y: -19.5}
-        - {x: 24, y: 22.5}
-        - {x: 20, y: 24.5}
+        - {x: -24, y: -24.5}
+        - {x: 21, y: -24.5}
+        - {x: 24, y: -21.5}
+        - {x: 24, y: 24.5}
     - name: game_over_neon_ui_buttons_sprite_sheet_1
       rect:
         serializedVersion: 2
@@ -99,14 +98,11 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 19.5, y: 24.5}
-        - {x: -22.5, y: 24.5}
-        - {x: -24.5, y: 23.5}
-        - {x: -24.5, y: -22.5}
-        - {x: -23.5, y: -24.5}
-        - {x: 18.5, y: -24.5}
-        - {x: 24.5, y: -19.5}
-        - {x: 24.5, y: 20.5}
+      - - {x: -21.5, y: 24.5}
+        - {x: -24.5, y: 21.5}
+        - {x: -24.5, y: -24.5}
+        - {x: 24.5, y: -24.5}
+        - {x: 24.5, y: 24.5}
     - name: game_over_neon_ui_buttons_sprite_sheet_3
       rect:
         serializedVersion: 2
@@ -119,12 +115,40 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -23.5, y: 24}
-        - {x: -23.5, y: -18}
+        - {x: -23.5, y: -22}
         - {x: -22.5, y: -24}
-        - {x: 18.5, y: -24}
-        - {x: 23.5, y: -20}
-        - {x: 23.5, y: 22}
-        - {x: 21.5, y: 24}
+        - {x: 23.5, y: -24}
+        - {x: 23.5, y: 24}
+    - name: game_over_neon_ui_buttons_sprite_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24, y: 24}
+        - {x: -24, y: -24}
+        - {x: 24, y: -24}
+        - {x: 24, y: 24}
+    - name: game_over_neon_ui_buttons_sprite_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 0
+        width: 47
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23.5, y: 24}
+        - {x: -23.5, y: -24}
+        - {x: 23.5, y: -24}
+        - {x: 23.5, y: 24}
     outline: []
   spritePackingTag: 
   userData: 

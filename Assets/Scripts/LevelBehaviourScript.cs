@@ -30,7 +30,8 @@ public class LevelBehaviourScript : MonoBehaviour
     private int lifes = 3;
     private int continues = 1;
     private int comboCounter = 0;
-    private bool playerTurn = false;
+    private bool isPlayerTurn = false;
+    private bool isPlaying = true;
 
     //audios
     private AudioClip ac_alarm, ac_comboBreaker, ac_levelup;
@@ -40,7 +41,7 @@ public class LevelBehaviourScript : MonoBehaviour
     private AudioSource _audioSource;
 
     // Use this for initialization
-    void OnEnable()
+    void Awake()
     {
         // audio clips
         ac_alarm = Resources.Load<AudioClip>("Sounds/FX/Alarm") as AudioClip;
@@ -60,8 +61,8 @@ public class LevelBehaviourScript : MonoBehaviour
         TimerBehaviourScript.OnOverTime += HandlerOverTime;
         GameOverUIBehaviour.OnRestartClick += Restart;
         GameOverUIBehaviour.OnContinueClick += Continue;
-
-
+        InGameUiBehaviourScript.OnPauseClicked += HandlerPauseEvent;
+        InGameUiBehaviourScript.OnMuteClicked += HandlerMuteEvent;
 
     }
     /// <summary>
@@ -71,9 +72,7 @@ public class LevelBehaviourScript : MonoBehaviour
     {
         // adiciona uma rodada ao simon        
         this.Simon.AddLight();
-        //inicia
-        Alert.Text = "Memorize the sequence.";
-        Invoke("PlaySimon", 1f);
+        Play();
     }
     /// <summary>
     /// Retoma a partida se ainda houveram continues
@@ -86,13 +85,21 @@ public class LevelBehaviourScript : MonoBehaviour
         --continues; // desconta o continue
         if (lifes < 3) // verifica se a quantida de vidas é menor que o maximo
         {
-            lifes = 1; // devolve uma vida 
+            lifes += 1; // devolve uma vida 
             InGameUi.AddLife(); // exibe a vida
         }
-        
+
         GameOverUi.gameObject.SetActive(false);
         Simon.gameObject.SetActive(true);
 
+        Play();
+    }
+    /// <summary>
+    /// Inicia o simon
+    /// </summary>
+    private void Play()
+    {
+        //inicia
         Alert.Text = "Memorize the sequence.";
         Invoke("PlaySimon", 1f);
     }
@@ -107,7 +114,7 @@ public class LevelBehaviourScript : MonoBehaviour
         Alert.Text = "You turn.";
 
         // libera a rodada para o jogador
-        playerTurn = true;
+        isPlayerTurn = true;
         // inicia o temporizador
         this.Timer.Play();
 
@@ -121,9 +128,47 @@ public class LevelBehaviourScript : MonoBehaviour
         Alert.Text = "Memorize the sequence.";
 
         // trava a jogada do player
-        playerTurn = false;
+        isPlayerTurn = false;
 
     }
+    /// <summary>
+    /// Manipula o vento de mute
+    /// </summary>
+    private void HandlerMuteEvent(bool isMute)
+    {
+        Camera.main.GetComponent<AudioListener>().enabled = !isMute;
+
+    }
+    /// <summary>
+    /// Manipula o evento de pause
+    /// </summary>
+    private void HandlerPauseEvent()
+    {
+        // verifica se esta na vez do jogado
+        if (isPlayerTurn)
+        {
+            isPlaying = !isPlaying; // inverte o status da partida
+
+            // pausa ou libera o simon de acordo com o status 
+            if (isPlaying)
+            {
+                // toca
+                Timer.Resume();
+            }
+            else
+            {
+                // pausa
+                Timer.Pause();
+            }
+
+
+        }
+        else
+        {
+            Alert.Text = "Pause only your turn.";
+        }
+    }
+
     /// <summary>
     /// Manipula o evento dispardo quando o tempo acaba
     /// </summary>
@@ -141,8 +186,8 @@ public class LevelBehaviourScript : MonoBehaviour
     /// <param name="light"></param>
     private void HandlerTouchLight(LightBehaviourScript light)
     {
-        //se não for o turno do jogador ignora
-        if (!playerTurn) return;
+        //se não for o turno do jogador ignora ou o jogo está pausado
+        if (!isPlayerTurn | !isPlaying) return;
 
         // liga a lampada
         StartCoroutine(Simon.Blink(light));
@@ -160,7 +205,7 @@ public class LevelBehaviourScript : MonoBehaviour
             if (Simon.SequenceCursor == Simon.SequenceLenght)
             {
                 // quando passa de nivel termina a jogada do 
-                playerTurn = false;
+                isPlayerTurn = false;
                 Debug.Log("### Level UP ###");
                 // level up
                 LevelUp();
@@ -321,7 +366,7 @@ public class LevelBehaviourScript : MonoBehaviour
 
         Alert.Text = "Ops! Try again.";
         // interrompe a jogada do player
-        playerTurn = false;
+        isPlayerTurn = false;
         // pausa o timer
         Timer.Stop();
         // quebra o combo
@@ -355,5 +400,7 @@ public class LevelBehaviourScript : MonoBehaviour
         TimerBehaviourScript.OnOverTime -= HandlerOverTime;
         GameOverUIBehaviour.OnRestartClick -= Restart;
         GameOverUIBehaviour.OnContinueClick -= Continue;
+        InGameUiBehaviourScript.OnPauseClicked -= HandlerPauseEvent;
+        InGameUiBehaviourScript.OnMuteClicked -= HandlerMuteEvent;
     }
 }
