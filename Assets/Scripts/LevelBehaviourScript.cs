@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
 
 public class LevelBehaviourScript : MonoBehaviour
 {
@@ -35,7 +33,6 @@ public class LevelBehaviourScript : MonoBehaviour
     private UnityAdsHelper AdsHelper = new UnityAdsHelper();
     //audios
     private AudioClip ac_alarm, ac_comboBreaker, ac_levelup;
-
 
     // components
     private AudioSource _audioSource;
