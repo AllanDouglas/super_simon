@@ -167,7 +167,8 @@ public class LevelBehaviourScript : MonoBehaviour
     /// </summary>
     private void HandlerMuteEvent(bool isMute)
     {
-        Camera.main.GetComponent<AudioListener>().enabled = !isMute;
+        Camera.main.GetComponent<AudioListener>().enabled =
+            !Camera.main.GetComponent<AudioListener>().enabled;
 
     }
     /// <summary>
