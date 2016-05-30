@@ -7,6 +7,8 @@ using UnityEngine.Advertisements;
 public class UnityAdsHelper
 {
 
+#if UNITY_ANDROID
+
     // actions
     public static event Action OnFinished;
     public static event Action OnFailed;
@@ -55,4 +57,5 @@ public class UnityAdsHelper
                 break;
         }
     }
+#endif
 }

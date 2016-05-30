@@ -69,6 +69,7 @@ public class TimerBehaviourScript : MonoBehaviour, ITimer
     public void Resume()
     {
         isPlaying = true;
+        StartCoroutine(Playing());
     }
 
     /// <summary>
@@ -77,6 +78,7 @@ public class TimerBehaviourScript : MonoBehaviour, ITimer
     public void Pause()
     {
         isPlaying = false;
+        
     }
     /// <summary>
     /// Para e reseta a contagem

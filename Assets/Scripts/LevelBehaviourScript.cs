@@ -65,7 +65,9 @@ public class LevelBehaviourScript : MonoBehaviour
         InGameUiBehaviourScript.OnPauseClicked += HandlerPauseEvent;
         InGameUiBehaviourScript.OnMuteClicked += HandlerMuteEvent;
         // ADS
+#if UNITY_ANDROID
         UnityAdsHelper.OnFinished += HandlerVideoFinished;
+#endif
 
     }
     /// <summary>
@@ -98,7 +100,9 @@ public class LevelBehaviourScript : MonoBehaviour
         }
         Debug.Log("Exibindo o vídeo de ADS");
         // exibe o vídeo do unity ads
+#if UNITY_ANDROID
         this.AdsHelper.Show();
+#endif
     }
 
     /// <summary>
@@ -179,11 +183,16 @@ public class LevelBehaviourScript : MonoBehaviour
             // pausa ou libera o simon de acordo com o status 
             if (isPlaying)
             {
+                Debug.Log("### RESUMING ###");
                 // toca
+                isPlaying = true;
+                Alert.Text = "";
                 Timer.Resume();
             }
             else
             {
+                Debug.Log("### PAUSING ###");
+                Alert.Text = "Paused.";
                 // pausa
                 Timer.Pause();
             }
@@ -440,6 +449,16 @@ public class LevelBehaviourScript : MonoBehaviour
         GameOverUIBehaviour.OnContinueClick -= Continue;
         InGameUiBehaviourScript.OnPauseClicked -= HandlerPauseEvent;
         InGameUiBehaviourScript.OnMuteClicked -= HandlerMuteEvent;
+#if UNITY_ANDROID
         UnityAdsHelper.OnFinished -= HandlerVideoFinished;
+#endif
+    }
+
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }

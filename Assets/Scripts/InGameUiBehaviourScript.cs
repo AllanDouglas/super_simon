@@ -56,7 +56,7 @@ public class InGameUiBehaviourScript : MonoBehaviour
     {
         set { score.text = value.ToString("D6"); }
     }
-   
+
 
     /// <summary>
     /// Configura o level
@@ -178,7 +178,7 @@ public class InGameUiBehaviourScript : MonoBehaviour
             OnPauseClicked();
         }
         // exibe interface de resume        
-        buttonResume.gameObject.SetActive(!buttonResume.gameObject.activeSelf);
+        //buttonResume.gameObject.SetActive(!buttonResume.gameObject.activeSelf);
 
     }
 

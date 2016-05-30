@@ -9,5 +9,13 @@ public class StartScreenBehaviourScript : MonoBehaviour {
           SceneManagement.
           SceneManager.LoadScene(1);
     }
+
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
 	
 }
