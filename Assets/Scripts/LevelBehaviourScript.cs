@@ -25,11 +25,13 @@ public class LevelBehaviourScript : MonoBehaviour
     private int score = 0;
     private int level = 1;
     private int combo = 1;
-    private int lifes = 3;
-    private int continues = 1;
+    private int lifes = 3;    
     private int comboCounter = 0;
     private bool isPlayerTurn = false;
     private bool isPlaying = true;
+
+    private static int continues = 0;
+
     private UnityAdsHelper AdsHelper = new UnityAdsHelper();
     //audios
     private AudioClip ac_alarm, ac_comboBreaker, ac_levelup;
@@ -40,6 +42,11 @@ public class LevelBehaviourScript : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        // para quando abrir o game pela primeira vez a 
+        //quantidade de continues ser igual a 1
+        if (continues == 0)
+            continues = 1;
+
         // audio clips
         ac_alarm = Resources.Load<AudioClip>("Sounds/FX/Alarm") as AudioClip;
         ac_comboBreaker = Resources.Load<AudioClip>("Sounds/FX/Downer01") as AudioClip;
@@ -84,7 +91,11 @@ public class LevelBehaviourScript : MonoBehaviour
     /// </summary>
     private void HandlerVideoFinished()
     {
-        this.continues = 3;
+        continues = 3;
+
+        GameOverUi.TextContinues = continues.ToString();
+        GameOverUi.ContinueLabelText = "Continue";
+        
     }
 
     /// <summary>
@@ -167,8 +178,7 @@ public class LevelBehaviourScript : MonoBehaviour
     /// </summary>
     private void HandlerMuteEvent(bool isMute)
     {
-        Camera.main.GetComponent<AudioListener>().enabled =
-            !Camera.main.GetComponent<AudioListener>().enabled;
+        AudioListener.pause = !AudioListener.pause;
 
     }
     /// <summary>
@@ -402,8 +412,8 @@ public class LevelBehaviourScript : MonoBehaviour
     private void Error()
     {
         //remove uma vida
-        InGameUi.RemoveLife();
         this.lifes--;
+        InGameUi.RemoveLife();        
         // verifica se ainda tem vidas 
         //se não houver gameover
         if (lifes <= 0)
@@ -446,8 +456,8 @@ public class LevelBehaviourScript : MonoBehaviour
         SimonBehaviourScript.OnEndPlay -= HandlerEndPlaySimon;
         SimonBehaviourScript.OnStartPlay -= HandlerStartPlaySimon;
         TimerBehaviourScript.OnOverTime -= HandlerOverTime;
-        GameOverUIBehaviour.OnRestartClick -= Restart;
-        GameOverUIBehaviour.OnContinueClick -= Continue;
+        GameOverUIBehaviour.OnRestartClick -= Restart;        
+        GameOverUIBehaviour.OnContinueClick -= HandlerContinueEvent;
         InGameUiBehaviourScript.OnPauseClicked -= HandlerPauseEvent;
         InGameUiBehaviourScript.OnMuteClicked -= HandlerMuteEvent;
 #if UNITY_ANDROID

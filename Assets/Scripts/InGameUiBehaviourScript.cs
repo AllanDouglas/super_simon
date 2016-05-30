@@ -101,7 +101,7 @@ public class InGameUiBehaviourScript : MonoBehaviour
     /// </summary>
     public void AddLife()
     {
-        for (int i = 2; i <= 0; i--)
+        for (int i = 2; i >= 0; i--)
         {
             if (lifeCounters[i].gameObject.activeSelf == false)
             {
