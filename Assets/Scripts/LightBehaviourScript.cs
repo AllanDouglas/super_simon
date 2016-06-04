@@ -41,14 +41,40 @@ public class LightBehaviourScript : MonoBehaviour, ISwitch {
 	}
 
 
-	// ativar
+	/// <summary>
+    /// Ativa a luz
+    /// </summary>
 	public void TurnOn(){
 		this._spriteRenderer.sprite = this.active;
 		this._audioSource.PlayOneShot (this.sound);
 	}
-	// desativar 
+	/// <summary>
+    /// Apaga a luz
+    /// </summary>
 	public void TurnOff(){
 		this._spriteRenderer.sprite = this.standard;
 	}
-
+    /// <summary>
+    /// Piscar
+    /// </summary>
+    public void Blink()
+    {
+        StartCoroutine(Blinking());
+    }
+    /// <summary>
+    /// Faz a luz piscar algumas vezes
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator Blinking()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            Debug.Log("Acende");
+            this._spriteRenderer.sprite = this.active;
+            yield return new WaitForSeconds(0.1f);
+            Debug.Log("Apaga");
+            this._spriteRenderer.sprite = this.standard;
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
 }

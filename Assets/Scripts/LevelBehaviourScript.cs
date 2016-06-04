@@ -240,6 +240,7 @@ public class LevelBehaviourScript : MonoBehaviour
         StartCoroutine(Simon.Blink(light));
 
         // pego a luz atual da squencia do simon
+
         LightBehaviourScript CurrentLight = Simon.GetCurrentLight();
         // compara com light clicada        
         if (light == CurrentLight)
@@ -261,9 +262,11 @@ public class LevelBehaviourScript : MonoBehaviour
         }
         else
         {
-            Debug.Log("### Errou ###");
             // erro
-            Error();
+            Debug.Log("### Errou ###");
+            CurrentLight.Blink();
+            Invoke("Error",.5f);            
+            
         }
 
 
@@ -273,7 +276,7 @@ public class LevelBehaviourScript : MonoBehaviour
     /// </summary>
     private void PlaySimon()
     {
-        Simon.Play();
+        if(isPlaying) Simon.Play();
     }
 
     /// <summary>
@@ -365,6 +368,8 @@ public class LevelBehaviourScript : MonoBehaviour
     /// </summary>
     private void GameOver()
     {
+        isPlaying = false;
+        isPlayerTurn = false;
 
         GameOverUi.TextLevel = level.ToString();
         GameOverUi.TextScore = score.ToString();

@@ -9,4 +9,6 @@ public interface ISwitch
 
     void TurnOff();
 
+    void Blink();
+
 }

@@ -18,8 +18,15 @@ public class SimonBehaviourScript : MonoBehaviour {
 	public List<LightBehaviourScript> lights = new List<LightBehaviourScript>();
     [Header("Time to change the light")]
     public float timeToChange = 1.3f;
+    [Header("Accelerate starting from")]
+    public int accelerateIn = 5;
 
+    // privates    
+    private int lastIndexChange = 0;// ultimo index que foi alterado no array de sequence
+    private int sequenceCursor = 0; // indice da sequencia para comparação
+    
     // propriedades
+
     /// <summary>
     /// Posicao atual do cursor
     /// </summary>
@@ -34,20 +41,11 @@ public class SimonBehaviourScript : MonoBehaviour {
     {
         get { return sequence.Count; }
     }
-	// privates
-	private int sequenceCursor = 0; // indice da sequencia para comparação
-
-
+	
 	/// <summary>
 	/// Sequencia de luzes 
 	/// </summary>
 	private List<LightBehaviourScript> sequence = new List<LightBehaviourScript>();
-
-	// Use this for initialization
-	void Start () {
-		
-
-	}
 
 	// adiciona uma nova luz para a sequencia
 	public void AddLight(){
@@ -56,6 +54,7 @@ public class SimonBehaviourScript : MonoBehaviour {
 		LightBehaviourScript light = lights [index];
 		// adiciona na sequencia
 		sequence.Add(light);
+        lastIndexChange = sequence.Count;
 
 	}
 	/// <summary>
@@ -74,12 +73,25 @@ public class SimonBehaviourScript : MonoBehaviour {
 		StartCoroutine (PlaySequence ());
 	}
 	// toca a sequencia em uma corrotina
-	private IEnumerator PlaySequence(){		
+	private IEnumerator PlaySequence(){
 
-		// para cada nota
-		foreach(LightBehaviourScript light in this.sequence ){
+        // para cada nota
+        int index = 0;
+		foreach(LightBehaviourScript light in this.sequence )
+        {
 
-            yield return Blink(light);
+            float timeToPlay = timeToChange;
+            // verifica se existem mais de X luzes  
+            //  verifica se é a penultima luz adicionada
+            //   se for volta o tempo para normal       
+            if (index != (lastIndexChange - 1) && sequence.Count > accelerateIn )
+            {
+                timeToPlay *= .3f;// reduz o tempo de tocar pela metade                
+            }
+
+            index++;
+            Debug.Log(timeToPlay);
+            yield return Blink(light,timeToPlay);
             
         }
 
@@ -97,7 +109,17 @@ public class SimonBehaviourScript : MonoBehaviour {
     /// <returns></returns>
     public IEnumerator Blink(LightBehaviourScript light)
     {
+        yield return Blink(light, timeToChange);
         
+    }
+    /// <summary>
+    /// Faz a luz piscar
+    /// </summary>
+    /// <param name="light"></param>
+    /// <param name="timeToChange"></param>
+    /// <returns></returns>
+    public IEnumerator Blink(LightBehaviourScript light, float timeToChange)
+    {
         // toca a nota 
         light.TurnOn();
         // espera
@@ -106,8 +128,8 @@ public class SimonBehaviourScript : MonoBehaviour {
         light.TurnOff();
         // aguarda meio segundo antes de ligar 
         yield return new WaitForSeconds(0.5f);
-
     }
+
 	/// <summary>
 	/// Troca um elemento da sequencia por outro aleatorio
 	/// </summary>
@@ -119,6 +141,7 @@ public class SimonBehaviourScript : MonoBehaviour {
 		int seqRandom = Random.Range(0, sequence.Count);
 		// adiciona na sequencia
 		sequence[seqRandom] = light;
+        lastIndexChange = index;
 
 	}
 
