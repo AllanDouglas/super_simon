@@ -295,20 +295,22 @@ public class LevelBehaviourScript : MonoBehaviour
         level++;
         InGameUi.Level = level;
 
-
+        // incrementa o tempo
+        Timer.MaxTime = Timer.MaxTime + incrementTime;
+        // adiciona uma luz no simon
+        Simon.AddLight();
+        /*
         // se o nivel for menor que o modelador
         if (level < levelModulator)
         {
-            // incrementa o tempo
-            Timer.MaxTime = Timer.MaxTime + incrementTime;
-            // adiciona uma luz no simon
-            Simon.AddLight();
+            
         }
         else
         {
             //se não troca uma Light
-            Simon.ChangeOne();
+            //Simon.ChangeOne();
         }
+        */
 
         // toca a sequencia novamente;
         Invoke("PlaySimon", 2f);
