@@ -124,6 +124,9 @@ public class LevelBehaviourScript : MonoBehaviour
         if (continues <= 0)
             return;
 
+        isPlaying = true;
+        
+
         --continues; // desconta o continue
         if (lifes < 3) // verifica se a quantida de vidas é menor que o maximo
         {
@@ -391,6 +394,7 @@ public class LevelBehaviourScript : MonoBehaviour
             GameOverUi.ContinueLabelText = "Get Continues!";
         }
 
+        Timer.Stop();
 
         GameOverUi.gameObject.SetActive(true);
         Simon.gameObject.SetActive(false);

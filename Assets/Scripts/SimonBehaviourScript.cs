@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class SimonBehaviourScript : MonoBehaviour {
+public class SimonBehaviourScript : MonoBehaviour
+{
     // eventos
     public delegate void SimonEvent(SimonBehaviourScript simon);
     /// <summary>
@@ -14,8 +15,8 @@ public class SimonBehaviourScript : MonoBehaviour {
     /// </summary>
     public static event SimonEvent OnEndPlay;
 
-	[Header("Lights")]
-	public List<LightBehaviourScript> lights = new List<LightBehaviourScript>();
+    [Header("Lights")]
+    public List<LightBehaviourScript> lights = new List<LightBehaviourScript>();
     [Header("Time to change the light")]
     public float timeToChange = 1.3f;
     [Header("Accelerate starting from")]
@@ -24,7 +25,7 @@ public class SimonBehaviourScript : MonoBehaviour {
     // privates    
     private int lastIndexChange = 0;// ultimo index que foi alterado no array de sequence
     private int sequenceCursor = 0; // indice da sequencia para comparação
-    
+
     // propriedades
 
     /// <summary>
@@ -41,67 +42,70 @@ public class SimonBehaviourScript : MonoBehaviour {
     {
         get { return sequence.Count; }
     }
-	
-	/// <summary>
-	/// Sequencia de luzes 
-	/// </summary>
-	private List<LightBehaviourScript> sequence = new List<LightBehaviourScript>();
 
-	// adiciona uma nova luz para a sequencia
-	public void AddLight(){
-		// randomiza uma posicao das luzes possives
-		int index = Random.Range(0, lights.Count);
-		LightBehaviourScript light = lights [index];
-		// adiciona na sequencia
-		sequence.Add(light);
+    /// <summary>
+    /// Sequencia de luzes 
+    /// </summary>
+    private List<LightBehaviourScript> sequence = new List<LightBehaviourScript>();
+
+    // adiciona uma nova luz para a sequencia
+    public void AddLight()
+    {
+        // randomiza uma posicao das luzes possives
+        int index = Random.Range(0, lights.Count);
+        LightBehaviourScript light = lights[index];
+        // adiciona na sequencia
+        sequence.Add(light);
         lastIndexChange = sequence.Count;
 
-	}
-	/// <summary>
-	/// Inicia a sequencia
-	/// </summary>
-	public void Play(){
+    }
+    /// <summary>
+    /// Inicia a sequencia
+    /// </summary>
+    public void Play()
+    {
         // se o evento estiver setado executa-o
-        if(OnStartPlay != null)
+        if (OnStartPlay != null)
         {
             OnStartPlay(this);
         }
 
-		// reseta a contagem da sequenica de comparação
-		sequenceCursor = 0;
-		// inicia a sequencia
-		StartCoroutine (PlaySequence ());
-	}
-	// toca a sequencia em uma corrotina
-	private IEnumerator PlaySequence(){
+        // reseta a contagem da sequenica de comparação
+        sequenceCursor = 0;
+        // inicia a sequencia
+        StartCoroutine(PlaySequence());
+    }
+    // toca a sequencia em uma corrotina
+    private IEnumerator PlaySequence()
+    {
 
         // para cada nota
         int index = 0;
-		foreach(LightBehaviourScript light in this.sequence )
+        foreach (LightBehaviourScript light in this.sequence)
         {
 
             float timeToPlay = timeToChange;
             // verifica se existem mais de X luzes  
             //  verifica se é a penultima luz adicionada
             //   se for volta o tempo para normal       
-            if (index != (lastIndexChange - 1) && sequence.Count > accelerateIn )
+            if (index != (lastIndexChange - 1) && sequence.Count > accelerateIn)
             {
                 timeToPlay *= .3f;// reduz o tempo de tocar pela metade                
             }
 
             index++;
             Debug.Log(timeToPlay);
-            yield return Blink(light,timeToPlay);
-            
+            yield return Blink(light, timeToPlay);
+
         }
 
         // se o evento de termino estiver setado executa-o
-        if(OnEndPlay != null)
+        if (OnEndPlay != null)
         {
             OnEndPlay(this);
         }
 
-	}
+    }
     /// <summary>
     /// Faz a luz piscar
     /// </summary>
@@ -110,7 +114,7 @@ public class SimonBehaviourScript : MonoBehaviour {
     public IEnumerator Blink(LightBehaviourScript light)
     {
         yield return Blink(light, timeToChange);
-        
+
     }
     /// <summary>
     /// Faz a luz piscar
@@ -130,30 +134,48 @@ public class SimonBehaviourScript : MonoBehaviour {
         yield return new WaitForSeconds(0.5f);
     }
 
-	/// <summary>
-	/// Troca um elemento da sequencia por outro aleatorio
-	/// </summary>
-	public void ChangeOne(){
-		// randomiza uma posicao das luzes possives
-		int index = Random.Range(0, lights.Count);
-		LightBehaviourScript light = lights [index];
-		// pega uma posicao aleatorio da sequencia
-		int seqRandom = Random.Range(0, sequence.Count);
-		// adiciona na sequencia
-		sequence[seqRandom] = light;
+    /// <summary>
+    /// Troca um elemento da sequencia por outro aleatorio
+    /// </summary>
+    public void ChangeOne()
+    {
+        // randomiza uma posicao das luzes possives
+        int index = Random.Range(0, lights.Count);
+        LightBehaviourScript light = lights[index];
+        // pega uma posicao aleatorio da sequencia
+        int seqRandom = Random.Range(0, sequence.Count);
+        // adiciona na sequencia
+        sequence[seqRandom] = light;
         lastIndexChange = index;
 
-	}
+    }
 
-	/// <summary>
-	/// Recupera a Light atual e adianta o cursor
-	/// </summary>
-	/// <returns>The current light.</returns>
-	public LightBehaviourScript GetCurrentLight(){
-		LightBehaviourScript light = sequence [sequenceCursor];
-		sequenceCursor++;
-		return  light;			
-	}
-
-
+    /// <summary>
+    /// Recupera a Light atual e adianta o cursor
+    /// </summary>
+    /// <returns>The current light.</returns>
+    public LightBehaviourScript GetCurrentLight()
+    {
+        LightBehaviourScript light = sequence[sequenceCursor];
+        sequenceCursor++;
+        return light;
+    }
+    /// <summary>
+    /// Quando desativado
+    /// </summary>
+    public void OnDisable()
+    {
+       
+    }
+    /// <summary>
+    /// Desliga todas as luzes acesas
+    /// </summary>
+    public void TurnOff()
+    {
+        // Deliga todas as luzes quando desativado
+        foreach (LightBehaviourScript luz in sequence)
+        {
+            luz.TurnOff();
+        }
+    }
 }
