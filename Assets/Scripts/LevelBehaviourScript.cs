@@ -379,6 +379,8 @@ public class LevelBehaviourScript : MonoBehaviour
         GameOverUi.TextLevel = level.ToString();
         GameOverUi.TextScore = score.ToString();
 
+        SaveRecords(); // grava os records
+
         GameOverUi.TextBestLevel = PlayerPrefs.GetInt(LEVEL_PLAYER_PREFS).ToString();
         GameOverUi.TextBestScore = PlayerPrefs.GetInt(SCORE_PLAYER_PREFS).ToString();
 
@@ -395,6 +397,8 @@ public class LevelBehaviourScript : MonoBehaviour
         }
 
         Timer.Stop();
+
+
 
         GameOverUi.gameObject.SetActive(true);
         Simon.gameObject.SetActive(false);
